@@ -78,7 +78,9 @@ final class JWT
     {
         if(empty($token)){
             $token = $this;
-        } elseif($token instanceof JWT){
+        } 
+        
+        if($token instanceof JWT){
             $token = $token->getToken();
         }
 
