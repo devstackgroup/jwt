@@ -11,7 +11,7 @@ $jwt->setIssuer('http://example.com')
 	->setIssuedAt(time())
 	->setNotBefore(time() + 60)
 	->sign('secret')
-    ->getToken();
+	->getToken();
 
 var_dump($jwt->verifyToken('secret'));
 
