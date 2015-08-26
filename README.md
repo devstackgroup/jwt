@@ -31,7 +31,7 @@ $jwt->setIssuer('http://example.com')
 	->sign('secret')
 	->getToken();
 ```
-### Validating
+### Verification
 ```php
 <?php
 
