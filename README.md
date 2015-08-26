@@ -1,4 +1,6 @@
 # JWT
+[![Latest Stable Version](https://poser.pugx.org/devstackgroup/jwt/v/stable)](https://packagist.org/packages/devstackgroup/jwt) [![Total Downloads](https://poser.pugx.org/devstackgroup/jwt/downloads)](https://packagist.org/packages/devstackgroup/jwt) [![License](https://poser.pugx.org/devstackgroup/jwt/license)](https://packagist.org/packages/devstackgroup/jwt)
+
 JWT (JSON Web Tokens) library for PHP
 
 By [ComStudio](http://comstudio.pl)
