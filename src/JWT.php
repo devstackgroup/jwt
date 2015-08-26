@@ -77,7 +77,7 @@ final class JWT
     public function verifyToken($key, $token = null)
     {
         if(empty($token)){
-        	$token = $this;
+            $token = $this;
         } elseif($token instanceof JWT){
             $token = $token->getToken();
         }
