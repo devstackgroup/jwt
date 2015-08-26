@@ -18,7 +18,7 @@ final class JWT
         'RS512' => ['openssl', 'SHA512']
     ];
 
-    private static $exp = 60;
+    private static $exp = 0;
 
     private $headers = [];
 
@@ -76,15 +76,15 @@ final class JWT
 
     public function verifyToken($key, $token = null)
     {
-        if(!$token instanceof JWT){
-            $token = $this;
+        if($token instanceof JWT){
+            $token = $token->getToken();
         }
 
         if (empty($key)) {
             throw new InvalidArgumentException('Key may not be empty');
         }
 
-        $token = explode('.', $token->getToken());
+        $token = explode('.', $token);
 
         if (count($token) != 3) {
             throw new UnexpectedValueException('Wrong number of segments');
@@ -119,7 +119,7 @@ final class JWT
         }
 
         if (!JWT::verify("$headB64.$payloadB64", $sign, $key, $header->alg)) {
-            throw new SignatureInvalidException('Signature verification failed');
+            return false;
         }
 
         if (isset($payload->nbf) && $payload->nbf > (time() + self::$exp)) {
@@ -181,7 +181,7 @@ final class JWT
 
     public function setNotBefore($notBefore)
     {
-        return $this->setClaim('nbf', (int) $notBefore);
+      	return $this->setClaim('nbf', (int) $notBefore);
     }
 
     public function setTimeOut($timeOut)
