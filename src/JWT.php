@@ -193,7 +193,7 @@ final class JWT
         self::$exp = $timeOut;
     }
 
-    private function setClaim($key,$value)
+    public function setClaim($key,$value)
     {
     	$this->claims[$key] = $value;
 
