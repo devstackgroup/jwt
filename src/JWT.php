@@ -180,12 +180,12 @@ final class JWT
 
 	public function setIssuedAt($issuedAt)
     {
-        return $this->setClaim('iat', (string) $issuedAt);
+        return $this->setClaim('iat', (int) $issuedAt);
     }
 
     public function setNotBefore($notBefore)
     {
-      	return $this->setClaim('nbf', (string) $notBefore);
+      	return $this->setClaim('nbf', (int) $notBefore);
     }
 
     public function setTimeOut($timeOut)
