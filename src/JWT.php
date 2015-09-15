@@ -73,6 +73,23 @@ final class JWT
 
         return implode('.', $payload);
     }
+    
+    public function getTokenPayload($token)
+    {
+    	$token = explode('.', $token);
+
+        if (count($token) != 3) {
+            throw new UnexpectedValueException('Wrong number of segments');
+        }
+        
+        list($headB64, $payloadB64, $cryptoB64) = $token;
+
+        if (null === $payload = JWT::jsonDecode(JWT::URLSafeB64Decode($payloadB64))) {
+            throw new UnexpectedValueException('Invalid claims encoding');
+        }
+        
+        return $payload;
+    }
 
     public function verifyToken($key, $token = null)
     {
